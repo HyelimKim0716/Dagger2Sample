@@ -1,6 +1,7 @@
 package com.example.dagger2sample.di
 
-import com.example.dagger2sample.CoffeeMaker
+import com.example.dagger2sample.data.CafeInfo
+import com.example.dagger2sample.data.CoffeeMaker
 import dagger.Component
 
 /**
