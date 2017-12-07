@@ -13,5 +13,7 @@ import javax.inject.Singleton
 interface CafeComponent {
     fun cafeInfo() : CafeInfo
 
-    fun coffeeMaker() : NewCoffeeMaker
+//    fun coffeeMaker() : NewCoffeeMaker
+
+    fun coffeeComponent() : NewCoffeeComponent.Builder
 }

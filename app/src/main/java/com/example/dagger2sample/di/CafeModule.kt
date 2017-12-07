@@ -8,11 +8,11 @@ import javax.inject.Singleton
 /**
  * Created by Owner on 2017-12-01.
  */
-@Module
+@Module (subcomponents = arrayOf(NewCoffeeComponent::class))
 class CafeModule {
     @Singleton @Provides fun provideCafeInfo(): CafeInfo = CafeInfo("Knowbie's Cafe")
 
-    @Provides fun provideNewCoffeeMaker(heater: Heater): NewCoffeeMaker = NewCoffeeMaker(heater)
-
-    @Provides fun provideHeater() : Heater = HeaterA()
+//    @Provides fun provideNewCoffeeMaker(heater: Heater): NewCoffeeMaker = NewCoffeeMaker(heater)
+//
+//    @Provides fun provideHeater() : Heater = HeaterA()
 }

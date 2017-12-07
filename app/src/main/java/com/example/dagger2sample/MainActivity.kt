@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         * You can get CafeInfo or get a cup of coffee with CafeComponent (the same as above CoffeeMakerComponent)
         */
         DaggerCafeComponent.create().cafeInfo().welcome()
-        DaggerCafeComponent.create().coffeeMaker().brew(CoffeeBean())
+//        DaggerCafeComponent.create().coffeeMaker().brew(CoffeeBean())
 
         /*
         * Adapt @Singleton  to CafeComponent
@@ -72,15 +72,30 @@ class MainActivity : AppCompatActivity() {
         val cafeComponent1 = DaggerCafeComponent.create()
         val cafeInfo1 = cafeComponent1.cafeInfo()
         val cafeInfo2 = cafeComponent1.cafeInfo()
+        println("cafeInfo1 is same as cafeInfo2 ? ${cafeInfo1 == cafeInfo2}")
 
         val cafeComponent2 = DaggerCafeComponent.create()
-        val coffeeMaker3 = cafeComponent2.coffeeMaker()
-        val coffeeMaker4 = cafeComponent2.coffeeMaker()
+//        val coffeeMaker3 = cafeComponent2.coffeeMaker()
+//        val coffeeMaker4 = cafeComponent2.coffeeMaker()
+//        println("coffeeMaker3 is same as coffeeMaker4 ? ${coffeeMaker3 == coffeeMaker4}")
 
         /*
         * Match CoffeeMaker and Heater
         * Make CoffeeCompoent
         * */
 
+        // CoffeeScope
+        val cafeComponent3 = cafeComponent1.coffeeComponent().build()
+        val cafeComponent4 = cafeComponent1.coffeeComponent().build()
+        val coffeeMaker5 = cafeComponent3.coffeeMaker()
+        val coffeeMaker6 = cafeComponent3.coffeeMaker()
+        println("Maker scope / same component coffeeMaker is equal? ${coffeeMaker5 == coffeeMaker6}")
+        val coffeeMaker7 = cafeComponent4.coffeeMaker()
+        println("Maker scope / different component coffeeMaker is equal? ${coffeeMaker5 == coffeeMaker7}")
+
+        // Non-Scope
+        val coffeeBean1 = cafeComponent3.coffeeBean()
+        val coffeeBean2 = cafeComponent3.coffeeBean()
+        println("Non scope / coffeeBean is equal? ${coffeeBean1 == coffeeBean2}")
     }
 }
